@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banned IG Tools</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #000;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            color: white;
+            border: 1px solid #ff0000;
+        }
+        
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            width: 100%;
+            padding: 20px;
+        }
+        
+        .login-box {
+            width: 100%;
+            max-width: 400px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            color: white;
+            border: 1px solid #ff0000;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ff0000;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ff0000;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #cc0000;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+        }
+        
+        .music-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ff0000;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+        }
+        
+        .status-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            border: 1px solid #ff0000;
+            max-height: 300px; /* Diperbesar dari 200px ke 300px */
+            min-height: 300px; /* Ditambahkan untuk memastikan tinggi konsisten */
+            overflow-y: auto;
+        }
+        
+        .status-item {
+            padding: 5px 0;
+            color: #ff0000;
+            font-family: monospace;
+            border-bottom: 1px dashed rgba(255, 0, 0, 0.3);
+        }
+        
+        .status-header {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ff0000;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #ff0000;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+        }
+        
+        .counter {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 0, 0, 0.3);
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <video id="bg-video" autoplay muted loop>
+        <source src="https://files.catbox.moe/93hv8t.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="overlay"></div>
+    
+    <div class="music-btn" onclick="toggleMusic()">♪</div>
+    
+    <div id="login-page" class="login-container">
+        <div class="login-box">
+            <div class="logo">BANNED IG TOOLS</div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Masukkan username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Masukkan password">
+            </div>
+            <button onclick="login()">LOGIN</button>
+        </div>
+    </div>
+    
+    <div id="main-page" class="container hidden">
+        <h1>BANNED IG TOOLS</h1>
+        
+        <div class="form-group">
+            <label for="target-username">Username Target</label>
+            <input type="text" id="target-username" placeholder="Contoh: @usernametarget">
+        </div>
+        
+        <div class="form-group">
+            <label for="token-ig">Token IG</label>
+            <input type="text" id="token-ig" placeholder="Contoh: #85272|826">
+        </div>
+        
+        <div class="form-group">
+            <label for="id-token">ID Token</label>
+            <input type="text" id="id-token" placeholder="Contoh: #8517|71">
+        </div>
+        
+        <div class="form-group">
+            <label for="report-count">Jumlah Report</label>
+            <input type="number" id="report-count" placeholder="Contoh: 70">
+        </div>
+        
+        <div class="form-group">
+            <label for="time">Time</label>
+            <input type="number" id="time" placeholder="Waktu dalam detik">
+        </div>
+        
+        <div class="form-group">
+            <label for="attack-type">Type Attack</label>
+            <select id="attack-type">
+                <option value="spam-report">Spam Report</option>
+                <option value="spam-easy">Spam Easy</option>
+                <option value="bypass-report">Bypass Report</option>
+            </select>
+        </div>
+        
+        <button onclick="startAttack()">BANNED IG</button>
+        
+        <div class="status-box">
+            <div class="status-header" id="status-header">
+                <strong>TARGET ATTACK:</strong> <span id="target-display">-</span><br>
+                <strong>TYPE SERANGAN:</strong> <span id="type-display">-</span><br>
+                <strong>STATUS:</strong> <span id="status-display">Menunggu input...</span>
+            </div>
+            <div id="attack-status">
+                <div class="counter" id="counter">0/10</div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="https://files.catbox.moe/bslobx.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        
+        document.body.style.backgroundImage = "url('https://files.catbox.moe/vajs8f.jpg')";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center";
+        
+        const music = document.getElementById('bg-music');
+        let musicPlaying = false;
+        let messageCount = 0;
+        
+        function toggleMusic() {
+            if (musicPlaying) {
+                music.pause();
+                musicPlaying = false;
+            } else {
+                music.play();
+                musicPlaying = true;
+            }
+        }
+        
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === "VVIP" && password === "ONLY") {
+                document.getElementById('login-page').classList.add('hidden');
+                document.getElementById('main-page').classList.remove('hidden');
+            } else {
+                alert("Login gagal! Username atau password salah.");
+            }
+        }
+        
+        function startAttack() {
+            const target = document.getElementById('target-username').value;
+            const tokenIg = document.getElementById('token-ig').value;
+            const idToken = document.getElementById('id-token').value;
+            const reportCount = document.getElementById('report-count').value;
+            const time = document.getElementById('time').value;
+            const attackType = document.getElementById('attack-type').value;
+            
+            if (!target || !tokenIg || !idToken || !reportCount || !time) {
+                alert("Harap isi semua field!");
+                return;
+            }
+            
+            alert("PROSES MEMBANNED TARGET");
+            
+            
+            document.getElementById('target-display').textContent = target;
+            document.getElementById('type-display').textContent = document.getElementById('attack-type').options[document.getElementById('attack-type').selectedIndex].text;
+            document.getElementById('status-display').textContent = "Menyerang...";
+            
+            const attackStatus = document.getElementById('attack-status');
+            attackStatus.innerHTML = '<div class="counter" id="counter">0/10</div>';
+            messageCount = 0;
+            
+            const attackTypeText = document.getElementById('attack-type').options[document.getElementById('attack-type').selectedIndex].text;
+            
+            
+            let count = 0;
+            const totalTime = parseInt(time);
+            const interval = setInterval(() => {
+                if (count < totalTime) {
+                    const statusItem = document.createElement('div');
+                    statusItem.className = 'status-item';
+                    statusItem.textContent = `attacking ${target} menggunakan ${attackTypeText}`;
+                    
+                    
+                    if (messageCount >= 10) {
+                       
+                        const counter = document.getElementById('counter');
+                        attackStatus.innerHTML = '';
+                        attackStatus.appendChild(counter);
+                        messageCount = 0;
+                    }
+                    
+                    attackStatus.appendChild(statusItem);
+                    attackStatus.scrollTop = attackStatus.scrollHeight;
+                    
+                    
+                    messageCount++;
+                    document.getElementById('counter').textContent = `${messageCount}/10`;
+                    
+                    count++;
+                } else {
+                    clearInterval(interval);
+                    document.getElementById('status-display').textContent = "Selesai";
+                    alert(`SUCCES MENYERANG ${target} dengan ${attackTypeText}`);
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+  </html>
